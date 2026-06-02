@@ -541,27 +541,6 @@ h6 {
   transform: scale(1.05);
 }
 
-.gallery-item .overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(26, 46, 90, 0.8), transparent);
-  opacity: 0;
-  transition: opacity var(--transition);
-  display: flex;
-  align-items: flex-end;
-  padding: 1.5rem;
-}
-
-.gallery-item:hover .overlay {
-  opacity: 1;
-}
-
-.gallery-item .overlay span {
-  color: var(--clr-white);
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -838,6 +817,9 @@ h6 {
   gap: 1.2rem;
   transition: all var(--transition);
   border-bottom: 3px solid transparent;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .info-box:hover {
@@ -1150,41 +1132,43 @@ h6 {
 
 
 /* ============================================
-   CTA BANNER (Lifetime of Confidence)
+   CTA BANNER (Full-width Section on Index)
    ============================================ */
-.cta-banner {
+section.cta-banner {
   position: relative;
   padding: clamp(3.5rem, 7vw, 6rem) 1.25rem;
   background: var(--clr-dark);
   overflow: hidden;
+  border-radius: 0;
+  margin-bottom: 0;
 }
 
-.cta-banner-bg {
+section.cta-banner .cta-banner-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-.cta-banner-bg img {
+section.cta-banner .cta-banner-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.cta-banner-overlay {
+section.cta-banner .cta-banner-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
 
-.cta-banner .container {
+section.cta-banner .container {
   position: relative;
   z-index: 2;
   text-align: center;
 }
 
-.cta-banner h5 {
+section.cta-banner h5 {
   font-size: var(--fs-h5);
   color: var(--clr-accent);
   text-transform: uppercase;
@@ -1192,7 +1176,7 @@ h6 {
   margin-bottom: 0.8rem;
 }
 
-.cta-banner h2 {
+section.cta-banner h2 {
   font-size: var(--fs-h2);
   color: var(--clr-white);
   margin-bottom: 2rem;
@@ -1538,28 +1522,45 @@ h6 {
 .footer {
   background: var(--grad-dark);
   color: rgba(255, 255, 255, 0.7);
-  padding: 2.5rem 1.25rem 0;
+  padding: 2.5rem 1.25rem 1.5rem;
 }
 
-.footer .logo-text {
-  color: var(--clr-white);
-}
-
-.footer .logo-text span {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.footer-top {
+.footer-main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1.2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 1.5rem;
+  gap: 2rem;
+  padding-bottom: 1.5rem;
 }
 
-.footer-logo .logo-text {
-  font-size: 1.3rem;
+.footer-logo img {
+  max-height: 60px;
+}
+
+.footer-contact-row {
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-contact-item svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--clr-accent);
+}
+
+.footer-contact-item span,
+.footer-contact-item a {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
 }
 
 .footer-socials {
@@ -1568,15 +1569,15 @@ h6 {
 }
 
 .footer-socials a {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 1rem;
+  font-size: 0.95rem;
   transition: all var(--transition);
 }
 
@@ -1586,81 +1587,43 @@ h6 {
   color: var(--clr-white);
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1.5fr;
-  gap: 2.5rem;
-  padding: 1.5rem 0;
-}
-
-.footer-col h3 {
-  font-size: 1.05rem;
-  color: var(--clr-white);
-  margin-bottom: 1.2rem;
-  font-weight: 600;
-}
-
-.footer-col p {
-  font-size: var(--fs-small);
-  line-height: 1.8;
-}
-
-.footer-col ul li {
-  margin-bottom: 0.6rem;
-}
-
-.footer-col ul li a {
-  font-size: var(--fs-small);
-  color: rgba(255, 255, 255, 0.65);
-  transition: all var(--transition);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.footer-col ul li a:hover {
-  color: var(--clr-accent);
-  padding-left: 4px;
-}
-
-.footer-contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.footer-contact-item svg {
-  width: 16px;
-  height: 16px;
-  min-width: 16px;
-  fill: var(--clr-accent);
-  margin-top: 3px;
-}
-
-.footer-contact-item span {
-  font-size: var(--fs-small);
-  line-height: 1.6;
-}
-
-.footer-contact-item a {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.footer-contact-item a:hover {
-  color: var(--clr-accent);
+.footer-divider {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.5rem 0;
+  padding-top: 1.5rem;
   text-align: center;
-  font-size: var(--fs-small);
-  color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-bottom p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .footer-bottom a {
   color: var(--clr-accent);
+  transition: color var(--transition);
+}
+
+.footer-bottom a:hover {
+  color: var(--clr-white);
+  text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+  .footer-main {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .footer-contact-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
 
 
@@ -2079,7 +2042,7 @@ h6 {
   line-height: 1.6;
 }
 
-.cta-banner {
+div.cta-banner {
   background: var(--clr-primary);
   color: var(--clr-white);
   border-radius: var(--radius-lg);
@@ -2091,13 +2054,13 @@ h6 {
   margin-bottom: 2rem;
 }
 
-.cta-banner h2 {
+div.cta-banner h2 {
   font-size: 2.25rem;
   margin-bottom: 1rem;
   color: var(--clr-white);
 }
 
-.cta-banner p {
+div.cta-banner p {
   font-size: 1.1rem;
   margin-bottom: 2rem;
   opacity: 0.9;
@@ -2106,17 +2069,17 @@ h6 {
   margin-right: auto;
 }
 
-.cta-banner .btn {
+div.cta-banner .btn {
   margin: 0 0.5rem;
 }
 
-.cta-banner .btn-secondary {
+div.cta-banner .btn-secondary {
   background: transparent;
   border: 2px solid var(--clr-white);
   color: var(--clr-white);
 }
 
-.cta-banner .btn-secondary:hover {
+div.cta-banner .btn-secondary:hover {
   background: var(--clr-white);
   color: var(--clr-primary);
 }
@@ -2142,15 +2105,15 @@ h6 {
     gap: 2rem;
   }
 
-  .cta-banner {
+  div.cta-banner {
     padding: 3rem 1.5rem;
   }
 
-  .cta-banner h2 {
+  div.cta-banner h2 {
     font-size: 1.75rem;
   }
 
-  .cta-banner .btn {
+  div.cta-banner .btn {
     display: block;
     margin: 1rem auto;
     width: 80%;
