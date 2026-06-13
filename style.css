@@ -93,6 +93,17 @@ a {
   transition: color var(--transition);
 }
 
+.text-link {
+  color: var(--clr-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  transition: all var(--transition);
+}
+
+.text-link:hover {
+  color: var(--clr-primary);
+}
+
 ul,
 ol {
   list-style: none;
@@ -999,6 +1010,12 @@ h6 {
   box-shadow: var(--shadow-lg);
 }
 
+.why-us-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 
 /* ============================================
    FEATURES STRIP
@@ -1094,6 +1111,26 @@ h6 {
 
 .value-card:hover::before {
   transform: scaleX(1);
+}
+
+.value-card-image {
+  grid-column: span 2;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 100%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.value-card-image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .value-card:hover {
@@ -1926,6 +1963,9 @@ section.cta-banner h2 {
   .values-grid {
     grid-template-columns: 1fr;
   }
+  .value-card-image {
+    grid-column: span 1;
+  }
 }
 
 /* ============================================
@@ -1981,9 +2021,76 @@ section.cta-banner h2 {
 }
 
 .curriculum-icon {
-  font-size: 2.5rem;
-  color: var(--clr-primary);
   margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.curriculum-icon img {
+  height: 3.5rem;
+  width: auto;
+  object-fit: contain;
+  transition: all var(--transition);
+}
+
+.curriculum-icon:not(.multi-flags) img:hover {
+  transform: translateY(-5px) scale(1.2);
+}
+
+.curriculum-icon.multi-flags {
+  position: relative;
+  height: 5.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.curriculum-icon.multi-flags img {
+  position: absolute;
+  height: 3.5rem;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), z-index 0s;
+}
+
+/* 2 up (rotated), 1 down (front & center) */
+.curriculum-icon.multi-flags img:nth-child(1) {
+  transform: translate(-35px, -12px) rotate(-8deg);
+  z-index: 1;
+}
+
+.curriculum-icon.multi-flags img:nth-child(3) {
+  transform: translate(35px, -12px) rotate(8deg);
+  z-index: 1;
+}
+
+.curriculum-icon.multi-flags img:nth-child(2) {
+  transform: translate(0, 12px);
+  z-index: 2;
+}
+
+/* Hover micro-interaction: zoom in place, bring to top */
+.curriculum-icon.multi-flags img:hover {
+  z-index: 10;
+}
+
+.curriculum-icon.multi-flags img:nth-child(1):hover {
+  transform: translate(-35px, -20px) scale(1.25) rotate(-6deg);
+}
+
+.curriculum-icon.multi-flags img:nth-child(2):hover {
+  transform: translate(0, 2px) scale(1.25);
+}
+
+.curriculum-icon.multi-flags img:nth-child(3):hover {
+  transform: translate(35px, -20px) scale(1.25) rotate(6deg);
+}
+
+.partner-link:hover img {
+  transform: scale(1.05);
 }
 
 .curriculum-card h3 {
