@@ -100,12 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ──────────────────────────────────────────────
-  // 5. WHATSAPP BUTTON TOGGLE
+  // 5. WHATSAPP BUTTON TOGGLE & SCROLL REVEAL
   // ──────────────────────────────────────────────
+  const whatsappFloat = document.getElementById('whatsappFloat');
   const whatsappBtn = document.getElementById('whatsappBtn');
   const whatsappOptions = document.getElementById('whatsappOptions');
 
-  if (whatsappBtn && whatsappOptions) {
+  if (whatsappFloat && whatsappBtn && whatsappOptions) {
     whatsappBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       whatsappOptions.classList.toggle('show');
@@ -118,6 +119,19 @@ document.addEventListener('DOMContentLoaded', () => {
     whatsappOptions.addEventListener('click', (e) => {
       e.stopPropagation();
     });
+
+    // Show WhatsApp button only after scrolling starts
+    const handleWhatsappScroll = () => {
+      if (window.scrollY > 50) {
+        whatsappFloat.classList.add('scrolled');
+      } else {
+        whatsappFloat.classList.remove('scrolled');
+        whatsappOptions.classList.remove('show');
+      }
+    };
+
+    window.addEventListener('scroll', handleWhatsappScroll, { passive: true });
+    handleWhatsappScroll();
   }
 
   // ──────────────────────────────────────────────
