@@ -205,19 +205,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // ──────────────────────────────────────────────
   const scrollTopBtn = document.getElementById('scrollTop');
 
-  function toggleScrollTopBtn() {
-    if (window.scrollY > 500) {
-      scrollTopBtn.classList.add('visible');
-    } else {
-      scrollTopBtn.classList.remove('visible');
+  if (scrollTopBtn) {
+    function toggleScrollTopBtn() {
+      if (window.scrollY > 500) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
     }
+
+    window.addEventListener('scroll', toggleScrollTopBtn, { passive: true });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
-
-  window.addEventListener('scroll', toggleScrollTopBtn, { passive: true });
-
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 
   // ──────────────────────────────────────────────
   // 8. SCROLL REVEAL ANIMATIONS
