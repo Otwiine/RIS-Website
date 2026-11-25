@@ -412,6 +412,29 @@ h6 {
   box-shadow: 0 0 0 4px rgba(45, 79, 161, 0.1);
 }
 
+.form-status {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  display: none;
+}
+
+.form-status.success {
+  display: block;
+  background-color: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #a5d6a7;
+}
+
+.form-status.error {
+  display: block;
+  background-color: #ffebee;
+  color: #b71c1c;
+  border: 1px solid #ef9a9a;
+}
+
 .social-links-v2 {
   margin-top: 3rem;
   padding-top: 2rem;

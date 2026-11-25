@@ -275,4 +275,71 @@ document.addEventListener('DOMContentLoaded', () => {
   // If you want a preloader, you can add one and
   // fade it out here after DOMContentLoaded.
 
+  // ──────────────────────────────────────────────
+  // 11. WEB3FORMS AJAX SUBMISSION
+  // ──────────────────────────────────────────────
+  const web3Forms = document.querySelectorAll('.contact-form-v2');
+
+  web3Forms.forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      const action = form.getAttribute('action');
+      if (!action || !action.includes('web3forms.com')) return;
+
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+      const statusBox = form.querySelector('.form-status');
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+      }
+
+      if (statusBox) {
+        statusBox.className = 'form-status';
+        statusBox.style.display = 'none';
+        statusBox.innerHTML = '';
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          if (statusBox) {
+            statusBox.className = 'form-status success';
+            statusBox.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. Our team will contact you shortly.';
+          } else {
+            alert('Thank you! Your message has been sent successfully.');
+          }
+          form.reset();
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      } catch (err) {
+        if (statusBox) {
+          statusBox.className = 'form-status error';
+          statusBox.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Oops! Something went wrong while sending your message. Please try again or reach us at <a href="mailto:info@redemptioninternationalschool.com" style="color: inherit; font-weight: 600; text-decoration: underline;">info@redemptioninternationalschool.com</a>.';
+        } else {
+          alert('Oops! Something went wrong. Please email us directly at info@redemptioninternationalschool.com.');
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        }
+      }
+    });
+  });
+
 });

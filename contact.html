@@ -114,7 +114,10 @@
         <div class="contact-form-side">
           <div class="form-card-v2">
             <h3>Send a Message</h3>
-            <form class="contact-form-v2">
+            <form class="contact-form-v2" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="7652c0d8-d260-43f2-b404-c5945c5102bd">
+              <input type="hidden" name="from_name" value="Redemption International School Website">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
               <div class="form-row">
                 <div class="form-group">
                   <label for="name">Full Name</label>
@@ -133,6 +136,7 @@
                 <label for="message">Message</label>
                 <textarea id="message" name="message" rows="6" placeholder="Your message here..." required></textarea>
               </div>
+              <div class="form-status" style="display: none;"></div>
               <button type="submit" class="btn btn-primary w-100">Send Message <i
                   class="fas fa-paper-plane"></i></button>
             </form>
