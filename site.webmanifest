@@ -1,0 +1,21 @@
+{
+  "name": "Redemption International School",
+  "short_name": "RIS",
+  "description": "Distinguished international Christian school in Munyonyo, Kampala, Uganda offering ACE, Cambridge, CBC, Robotics, and Multilingual education.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2d4fa1",
+  "icons": [
+    {
+      "src": "Assets/Images/Logos/ris-logo-2.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "Assets/Images/Logos/ris-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
