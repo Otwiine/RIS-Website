@@ -413,26 +413,29 @@ h6 {
 }
 
 .form-status {
-  padding: 1rem 1.25rem;
+  padding: 1.25rem 1.5rem;
   border-radius: var(--radius-sm);
   font-size: 0.95rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
   display: none;
+  transition: all var(--transition-base);
 }
 
 .form-status.success {
-  display: block;
+  display: block !important;
   background-color: #e8f5e9;
   color: #1b5e20;
-  border: 1px solid #a5d6a7;
+  border: 1.5px solid #4caf50;
+  box-shadow: 0 4px 14px rgba(76, 175, 80, 0.12);
 }
 
 .form-status.error {
-  display: block;
+  display: block !important;
   background-color: #ffebee;
   color: #b71c1c;
-  border: 1px solid #ef9a9a;
+  border: 1.5px solid #ef5350;
+  box-shadow: 0 4px 14px rgba(239, 83, 80, 0.12);
 }
 
 .social-links-v2 {

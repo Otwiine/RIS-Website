@@ -290,6 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
       const statusBox = form.querySelector('.form-status');
+      const isAdmissions = form.id === 'admissionsForm' || form.querySelector('input[name="child_name"]');
 
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -318,9 +319,39 @@ document.addEventListener('DOMContentLoaded', () => {
         if (response.ok && data.success) {
           if (statusBox) {
             statusBox.className = 'form-status success';
-            statusBox.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. Our team will contact you shortly.';
+            statusBox.style.display = 'block';
+
+            if (isAdmissions) {
+              statusBox.innerHTML = `
+                <div style="display: flex; align-items: flex-start; gap: 0.85rem;">
+                  <i class="fas fa-check-circle" style="font-size: 1.6rem; color: #2e7d32; flex-shrink: 0; margin-top: 0.1rem;"></i>
+                  <div>
+                    <strong style="display: block; font-size: 1.05rem; margin-bottom: 0.35rem; color: #1b5e20;">Inquiry Submitted Successfully!</strong>
+                    <p style="margin: 0; color: #2e7d32; font-size: 0.95rem; line-height: 1.45;">
+                      Thank you for contacting Redemption International School. We have received your admissions inquiry and our admissions office will reach out to you within 24 hours.
+                    </p>
+                  </div>
+                </div>
+              `;
+            } else {
+              statusBox.innerHTML = `
+                <div style="display: flex; align-items: flex-start; gap: 0.85rem;">
+                  <i class="fas fa-check-circle" style="font-size: 1.6rem; color: #2e7d32; flex-shrink: 0; margin-top: 0.1rem;"></i>
+                  <div>
+                    <strong style="display: block; font-size: 1.05rem; margin-bottom: 0.35rem; color: #1b5e20;">Message Sent Successfully!</strong>
+                    <p style="margin: 0; color: #2e7d32; font-size: 0.95rem; line-height: 1.45;">
+                      Thank you for contacting Redemption International School. Your message has been received and our team will get back to you shortly.
+                    </p>
+                  </div>
+                </div>
+              `;
+            }
+
+            statusBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           } else {
-            alert('Thank you! Your message has been sent successfully.');
+            alert(isAdmissions 
+              ? 'Thank you! Your admissions inquiry has been sent successfully.'
+              : 'Thank you! Your message has been sent successfully.');
           }
           form.reset();
         } else {
@@ -329,7 +360,20 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (err) {
         if (statusBox) {
           statusBox.className = 'form-status error';
-          statusBox.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Oops! Something went wrong while sending your message. Please try again or reach us at <a href="mailto:info@redemptioninternationalschool.com" style="color: inherit; font-weight: 600; text-decoration: underline;">info@redemptioninternationalschool.com</a>.';
+          statusBox.style.display = 'block';
+          statusBox.innerHTML = `
+            <div style="display: flex; align-items: flex-start; gap: 0.85rem;">
+              <i class="fas fa-exclamation-triangle" style="font-size: 1.5rem; color: #c62828; flex-shrink: 0; margin-top: 0.1rem;"></i>
+              <div>
+                <strong style="display: block; font-size: 1.05rem; margin-bottom: 0.35rem; color: #b71c1c;">Submission Failed</strong>
+                <p style="margin: 0; color: #b71c1c; font-size: 0.95rem; line-height: 1.45;">
+                  Oops! We could not send your message right now. Please try again or reach out directly to 
+                  <a href="mailto:info@redemptioninternationalschool.com" style="color: inherit; font-weight: 600; text-decoration: underline;">info@redemptioninternationalschool.com</a>.
+                </p>
+              </div>
+            </div>
+          `;
+          statusBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
           alert('Oops! Something went wrong. Please email us directly at info@redemptioninternationalschool.com.');
         }

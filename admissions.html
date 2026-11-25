@@ -171,9 +171,9 @@
           <p style="margin-bottom: 2rem; font-size: 0.95rem;">Alternatively, fill out this quick inquiry form and our
             admissions team will contact you shortly.</p>
 
-          <form class="contact-form-v2" action="https://api.web3forms.com/submit" method="POST">
+          <form class="contact-form-v2" id="admissionsForm" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="7652c0d8-d260-43f2-b404-c5945c5102bd">
-            <input type="hidden" name="from_name" value="Redemption International School Website">
+            <input type="hidden" name="from_name" value="Redemption International School - Admissions">
             <input type="hidden" name="subject" value="New Admissions Inquiry - Redemption International School">
             <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
             <div class="form-group">
@@ -208,7 +208,7 @@
               <label for="message">Additional Questions</label>
               <textarea id="message" name="message" rows="4" placeholder="How can we help you?"></textarea>
             </div>
-            <div class="form-status" style="display: none;"></div>
+            <div class="form-status" id="admissionsStatus" role="status" aria-live="polite"></div>
             <button type="submit" class="btn btn-primary w-100">Submit Inquiry <i
                 class="fas fa-paper-plane"></i></button>
           </form>
